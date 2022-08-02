@@ -11366,7 +11366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164059392}
   m_Layer: 0
-  m_Name: rm_8
+  m_Name: rm_8 (dark)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113718,7 +113718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1650253849}
   m_Layer: 0
-  m_Name: rm_9
+  m_Name: rm_9 (dark)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122068,7 +122068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762355122}
   m_Layer: 0
-  m_Name: rm_14
+  m_Name: rm_14 (dark)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
