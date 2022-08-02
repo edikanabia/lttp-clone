@@ -9,7 +9,6 @@
 /link to the past clone/[Bb]uilds/
 /link to the past clone/[Ll]ogs/
 /link to the past clone/[Mm]emoryCaptures/
-/link to the past clone/UserSettings/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
