@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/main_palace_area.unity
     guid: 82ebf29f7569f9244880130ae0d84983
+  - enabled: 1
+    path: Assets/Scenes/scene_2_bgs.unity
+    guid: 7bfba6b61c13873428a59debd98f086e
   m_configObjects: {}
