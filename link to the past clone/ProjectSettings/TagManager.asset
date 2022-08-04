@@ -7,6 +7,8 @@ TagManager:
   - border
   - lower_floor
   - upper_floor
+  - trigger1
+  - border1
   layers:
   - Default
   - TransparentFX
