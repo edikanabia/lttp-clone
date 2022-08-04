@@ -57,6 +57,13 @@ public class temp_link_movement : MonoBehaviour
             
         }
 
+        if(collision.gameObject.tag == "stairs")
+        {
+            tempLinkSpeed = 0.01f;
+        }else{
+            tempLinkSpeed = 0.04f;
+        }
+
     }
     
 }

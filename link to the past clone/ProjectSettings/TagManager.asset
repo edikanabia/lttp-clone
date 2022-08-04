@@ -7,6 +7,7 @@ TagManager:
   - border
   - lower_floor
   - upper_floor
+  - stairs
   layers:
   - Default
   - TransparentFX
