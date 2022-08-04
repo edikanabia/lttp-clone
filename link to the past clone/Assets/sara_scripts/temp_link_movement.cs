@@ -6,9 +6,10 @@ using UnityEngine;
 public class temp_link_movement : MonoBehaviour
 {
     public int current_floor = 1;
-    public float tempLinkSpeed = 10f;
+    public float tempLinkSpeed = 0;
     public Rigidbody2D tempLink_c;
 
+    public bool link_can_move = true;
 
     //order in layer vars
     public int sortingOrder = 16;
@@ -28,8 +29,12 @@ public class temp_link_movement : MonoBehaviour
     //movement
     private void Update()
     { 
-        _movement.x = Input.GetAxisRaw("Horizontal");
-        _movement.y = Input.GetAxisRaw("Vertical");
+        if(link_can_move == true)
+        {
+            _movement.x = Input.GetAxisRaw("Horizontal");
+            _movement.y = Input.GetAxisRaw("Vertical");
+        }
+        
     }
 
     private void FixedUpdate()
@@ -64,6 +69,18 @@ public class temp_link_movement : MonoBehaviour
             tempLinkSpeed = 0.01f;
         }else{
             tempLinkSpeed = 0.04f;
+        }
+
+        if(collision.gameObject.tag == "door_rm_1")
+        {
+            link_can_move = false;
+            tempLinkSpeed = 0.02f;
+        }
+
+        if (collision.gameObject.tag == "exit")
+        {
+            link_can_move = true;
+            tempLinkSpeed = 0.05f;
         }
 
     }

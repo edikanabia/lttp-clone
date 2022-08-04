@@ -9,6 +9,8 @@ TagManager:
   - upper_floor
   - stairs
   - deco
+  - door_rm_1
+  - exit
   layers:
   - Default
   - TransparentFX
