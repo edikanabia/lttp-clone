@@ -5,6 +5,7 @@ using UnityEngine;
 public class border_dis : MonoBehaviour
 {
     public GameObject[] borderss;
+    public GameObject[] decos;
     public static border_dis instance;
      
     
@@ -36,4 +37,29 @@ public class border_dis : MonoBehaviour
         }
         
     }
+
+    public void DisableCollisionsWithDeco()
+    {
+
+        decos = GameObject.FindGameObjectsWithTag("deco");
+
+        foreach (GameObject deco in decos)
+        {
+            deco.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+    }
+
+    public void ActivateCollisionsWithDeco()
+    {
+
+        decos = GameObject.FindGameObjectsWithTag("deco");
+
+        foreach (GameObject deco in decos)
+        {
+            deco.GetComponent<BoxCollider2D>().enabled = true;
+        }
+
+    }
+
 }

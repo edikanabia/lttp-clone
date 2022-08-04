@@ -45,8 +45,8 @@ public class temp_link_movement : MonoBehaviour
         if (collision.gameObject.tag == "lower_floor")
         {
             tempLinkSprite.sortingOrder = order_lower;
-            current_floor = -1;
             border_dis.instance.DisableCollisionsWithBorders();
+            border_dis.instance.ActivateCollisionsWithDeco();
 
 
         }
@@ -54,7 +54,9 @@ public class temp_link_movement : MonoBehaviour
         {
             border_dis.instance.ActivateCollisionsWithBorders();
             tempLinkSprite.sortingOrder = order_upper;
-            
+            border_dis.instance.DisableCollisionsWithDeco();
+
+
         }
 
         if(collision.gameObject.tag == "stairs")

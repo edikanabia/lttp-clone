@@ -8,6 +8,7 @@ TagManager:
   - lower_floor
   - upper_floor
   - stairs
+  - deco
   layers:
   - Default
   - TransparentFX
