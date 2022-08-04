@@ -65596,10 +65596,10 @@ MonoBehaviour:
   target: {fileID: 2126716853}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: -15}
-  limitLeft: 0
-  limitRight: 0
-  LimitBottom: 0
-  LimitTop: 0
+  limitLeft: -1.03
+  limitRight: 0.89
+  limitBottom: -1.1
+  limitTop: 0.4
 --- !u!1 &905710154
 GameObject:
   m_ObjectHideFlags: 0
@@ -152457,7 +152457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126716852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.005, y: -0.605, z: 0}
+  m_LocalPosition: {x: -0.053, y: -0.605, z: 0}
   m_LocalScale: {x: 0.12478268, y: 0.11970983, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

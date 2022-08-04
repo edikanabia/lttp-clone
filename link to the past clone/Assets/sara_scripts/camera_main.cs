@@ -14,7 +14,7 @@ public class camera_main : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
     private PlayerController _Link;
 
-    public float limitLeft, limitRight, LimitBottom, LimitTop;
+    public float limitLeft, limitRight, limitBottom, limitTop;
 
     private void Start()
     {
@@ -31,7 +31,10 @@ public class camera_main : MonoBehaviour
         Transform currentTarget = target;
         Vector3 desiredPosition = currentTarget.position + offset;
         transform.position = desiredPosition;
-        
-        
+
+        //first room bounderies
+        transform.position = new Vector3(Mathf.Clamp(desiredPosition.x, limitLeft, limitRight), Mathf.Clamp(desiredPosition.y, limitBottom, limitTop), desiredPosition.z);
+
+
     }
 }
