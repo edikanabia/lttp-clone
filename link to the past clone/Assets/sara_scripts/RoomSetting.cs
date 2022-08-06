@@ -6,8 +6,8 @@ public class RoomSetting : MonoBehaviour
 {
     [HideInInspector] public Vector2 room_camera_size;
     BoxCollider2D col;
-    public int room_number = 0;
-    // Start is called before the first frame update
+   // public int room_number = 0;
+    
     void Start()
     {
         col = GetComponent<BoxCollider2D>();

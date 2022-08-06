@@ -20,6 +20,8 @@ public class temp_link_movement : MonoBehaviour
     private Vector2 _movement;
 
 
+    //public Camera cam;
+
     private void Start()
     {
         tempLinkSprite = GetComponent<SpriteRenderer>();       
@@ -52,16 +54,12 @@ public class temp_link_movement : MonoBehaviour
             tempLinkSprite.sortingOrder = order_lower;
             border_dis.instance.DisableCollisionsWithBorders();
             border_dis.instance.ActivateCollisionsWithDeco();
-
-
         }
         else if (collision.gameObject.tag == "upper_floor")
         {
             border_dis.instance.ActivateCollisionsWithBorders();
             tempLinkSprite.sortingOrder = order_upper;
             border_dis.instance.DisableCollisionsWithDeco();
-
-
         }
 
         if(collision.gameObject.tag == "stairs")
@@ -70,19 +68,24 @@ public class temp_link_movement : MonoBehaviour
         }else{
             tempLinkSpeed = 0.04f;
         }
-
         if(collision.gameObject.tag == "door_rm_1")
         {
             link_can_move = false;
             tempLinkSpeed = 0.02f;
         }
-
         if (collision.gameObject.tag == "exit")
         {
             link_can_move = true;
             tempLinkSpeed = 0.05f;
         }
-
+   
+        //camera_boundaries change when in the new room
+        if(collision.gameObject.tag == "room")
+        {
+            //Camera.main.GetComponent<camera_main>().room_size = collision.gameObject.GetComponent<RoomSetting>().room_camera_size;
+            //Camera.main.GetComponent<camera_main>().room_pos = collision.gameObject.transform.position;
+            Camera.main.GetComponent<camera_main>().BoundCalc(collision.gameObject.GetComponent<RoomSetting>().room_camera_size, collision.gameObject.transform.position);
+        }
     }
     
 }
