@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class camera_main : MonoBehaviour
 {
-    public int room_number = 1;
+   // public int room_number = 1;
 
 
     public Transform target;
@@ -25,16 +25,7 @@ public class camera_main : MonoBehaviour
         }
     }
 
-    public void SetBoundariesForDifferentRooms()
-    {
-        if(room_number == 1)
-        {
-            limitLeft = -1.03f;
-            limitRight = 0.9f;
-            limitBottom = -1.1f;
-            limitTop = 0.4f;
-        }
-    }
+    
 
     private void Update()
     {
