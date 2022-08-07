@@ -36,14 +36,16 @@ public class camera_main : MonoBehaviour
         Vector3 desiredPosition = currentTarget.position + offset;
         transform.position = desiredPosition;
         //first room bounderies
-        transform.position = new Vector3(Mathf.Clamp(desiredPosition.x, limitLeft, limitRight), Mathf.Clamp(desiredPosition.y, limitBottom, limitTop), desiredPosition.z);
+        transform.position = new Vector3(Mathf.Clamp(desiredPosition.x, limitLeft, limitRight),
+                                         Mathf.Clamp(desiredPosition.y, limitBottom, limitTop), 
+                                         desiredPosition.z);
     }
 
     public void BoundCalc(Vector2 size, Vector3 pos)
     {
         limitRight = pos.x + (size.x/4 );
         limitLeft = pos.x - (size.x/4 );
-        limitBottom = pos.y - (size.y/4 );
-        limitTop = pos.y + (size.y /4);
+        limitBottom = pos.y - (size.y/2.8f );
+        limitTop = pos.y + (size.y /2.8f);
     }
 }
