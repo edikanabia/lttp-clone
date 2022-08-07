@@ -11,6 +11,8 @@ TagManager:
   - deco
   - door_rm_1
   - exit
+  - room
+  - low_floor_wall
   layers:
   - Default
   - TransparentFX
