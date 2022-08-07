@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public int playerHealth = 6;
     public float playerSpeed;
     public Rigidbody2D playerRB;
     private Vector2 _movement;
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = 6;
+
         _previousPosition = playerRB.position;
     }
 
@@ -24,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
-
+        
     }
 
     //updates at time intervals 

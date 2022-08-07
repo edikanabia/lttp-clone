@@ -7,6 +7,10 @@ TagManager:
   - border
   - lower_floor
   - upper_floor
+  - Object
+  - Enemy
+  - SwordAttack
+  - BowAttack
   layers:
   - Default
   - TransparentFX
