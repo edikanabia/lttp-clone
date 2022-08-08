@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public int playerHealth = 6;
     public float playerSpeed;
     public Rigidbody2D playerRB;
     private Vector2 _movement;
@@ -12,11 +13,17 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimator;
     private Vector2 _previousPosition;
 
+    GameObject enemy;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = 6;
+
         _previousPosition = playerRB.position;
+
+        enemy = GameObject.FindWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -25,6 +32,18 @@ public class PlayerController : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
+        if(playerHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            playerHealth -= enemy.GetComponent<Enemy>().enemyAttackPower;
+        }
     }
 
     //updates at time intervals 
