@@ -7,12 +7,12 @@ public class doors_auto_lock : MonoBehaviour
     bool door_open = true;
     public Rigidbody2D door1;
     public GameObject door1_;
-
+    
     //public Rigidbody2D door2;
     //public GameObject door2_;
 
     public Animator door1_animator;
-    //public Animator door2_animator;
+   // public Animator door2_animator;
 
     private void Start()
     {
