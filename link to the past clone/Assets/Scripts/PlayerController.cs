@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         playerRB.MovePosition(playerRB.position + _movement * playerSpeed);
 
         //animation
-        if(playerRB.position == _previousPosition) //isn't moving
+        /*if(playerRB.position == _previousPosition) //isn't moving
         {
             playerAnimator.SetBool("moving", false);
         }
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnimator.SetInteger("direction", 0);
             }
-        }
+        }*/
 
         _previousPosition = playerRB.position;
     }
