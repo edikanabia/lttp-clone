@@ -14,6 +14,12 @@ TagManager:
   - room
   - low_floor_wall
   - button_o_1
+  - Object
+  - Enemy
+  - SwordAttack
+  - BowAttack
+  - HorizontalObject
+  - VerticalObject
   layers:
   - Default
   - TransparentFX
