@@ -8,17 +8,17 @@ public class doors_auto_lock : MonoBehaviour
     public Rigidbody2D door1;
     public GameObject door1_;
 
-    public Rigidbody2D door2;
-    public GameObject door2_;
+    //public Rigidbody2D door2;
+    //public GameObject door2_;
 
     public Animator door1_animator;
-    public Animator door2_animator;
+    //public Animator door2_animator;
 
     private void Start()
     {
         door_open = true;
         door1_animator = door1.GetComponent<Animator>();
-        door2_animator = door2.GetComponent<Animator>();
+        //door2_animator = door2.GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -26,7 +26,7 @@ public class doors_auto_lock : MonoBehaviour
         if (door_open == false)
         {
             door1_animator.SetBool("locked", true);
-            door2_animator.SetBool("locked", true);
+            //door2_animator.SetBool("locked", true);
         }
     }
 
@@ -40,13 +40,13 @@ public class doors_auto_lock : MonoBehaviour
                 door_open = false;
                 //animation
                 door1_animator.SetBool("locked", true);
-                door2_animator.SetBool("locked", true);
+                //door2_animator.SetBool("locked", true);
                 //colliders back, Lick cant go
                 door1.GetComponent<BoxCollider2D>().enabled = true;
-                door2.GetComponent<BoxCollider2D>().enabled = true;
+                //door2.GetComponent<BoxCollider2D>().enabled = true;
                 //door can be seen again
                 door1.GetComponent<SpriteRenderer>().enabled = true;
-                door2.GetComponent<SpriteRenderer>().enabled = true;
+                //door2.GetComponent<SpriteRenderer>().enabled = true;
                 Destroy(this);
             }
         }
@@ -57,7 +57,7 @@ public class doors_auto_lock : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         door1.GetComponent<SpriteRenderer>().enabled = false;
-        door2.GetComponent<SpriteRenderer>().enabled = false;
+        //door2.GetComponent<SpriteRenderer>().enabled = false;
     }
 
 }
