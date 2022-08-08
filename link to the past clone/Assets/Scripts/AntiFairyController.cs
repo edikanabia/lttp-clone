@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class AntiFairyController : MonoBehaviour
 {
-    public float antiFairySpeed;
-    public Rigidbody2D antiFairyRB;
-    private Vector2 _movement;
-    private Vector2 _previousPosition;
+    public float antiFairySpeedX;
+    public float antiFairySpeedY;
 
     void Start()
     {
-        _previousPosition = antiFairyRB.position;
+        
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        
+        transform.Translate(antiFairySpeedX, antiFairySpeedY, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "VerticalObject")
+        {
+            antiFairySpeedX *= -1;
+        }
+
+        if(collision.gameObject.tag == "HorizontalObject")
+        {
+            antiFairySpeedY *= -1;
+        }
     }
 }

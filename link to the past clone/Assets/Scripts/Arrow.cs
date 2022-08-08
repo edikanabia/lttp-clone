@@ -28,7 +28,7 @@ public class Arrow : MonoBehaviour
             player.GetComponent<Bow>().hasShot = false;
         }
 
-        if(collision.gameObject.tag == "Object")
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject")
         {
             Destroy(this.gameObject);
             player.GetComponent<Bow>().hasShot = false;

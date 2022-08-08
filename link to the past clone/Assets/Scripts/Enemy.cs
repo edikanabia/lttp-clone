@@ -5,13 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int enemyHealth = 2;
-    public int enemyAttackPower;
+    public int enemyAttackPower = 1;
     public bool invulnerable;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,5 +24,5 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
+    
 }

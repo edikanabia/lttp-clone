@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - SwordAttack
   - BowAttack
+  - HorizontalObject
+  - VerticalObject
   layers:
   - Default
   - TransparentFX
