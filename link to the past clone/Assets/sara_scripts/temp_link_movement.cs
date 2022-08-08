@@ -90,6 +90,7 @@ public class temp_link_movement : MonoBehaviour
                 (collision.gameObject.GetComponent<RoomSetting>().room_camera_size, 
                 collision.gameObject.transform.position);
         }
-    }
+
+        }
     
 }

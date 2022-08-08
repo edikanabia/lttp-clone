@@ -13,6 +13,7 @@ TagManager:
   - exit
   - room
   - low_floor_wall
+  - button_o_1
   layers:
   - Default
   - TransparentFX
