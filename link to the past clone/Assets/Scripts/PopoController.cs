@@ -24,7 +24,7 @@ public class PopoController : MonoBehaviour
 
         //Debug.Log("Direction is " + direction);
 
-        if(Random.Range(1, 100) >= 98)
+        if(Random.Range(1, 100) >= 95)
         {
             switch(direction)
             {

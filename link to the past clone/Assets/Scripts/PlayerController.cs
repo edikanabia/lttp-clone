@@ -10,10 +10,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D playerRB;
     private Vector2 _movement;
 
-    public Animator playerAnimator;
+    //public Animator playerAnimator;
     private Vector2 _previousPosition;
 
-    GameObject enemy;
 
 
     // Start is called before the first frame update
@@ -23,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
         _previousPosition = playerRB.position;
 
-        enemy = GameObject.FindWithTag("Enemy");
+        
     }
 
     // Update is called once per frame
@@ -38,11 +37,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject hitEnemy = collision.gameObject;
+
         if(collision.gameObject.tag == "Enemy")
         {
-            playerHealth -= enemy.GetComponent<Enemy>().enemyAttackPower;
+            playerHealth -= hitEnemy.GetComponent<Enemy>().enemyAttackPower;
         }
     }
 
@@ -53,36 +54,36 @@ public class PlayerController : MonoBehaviour
     {
         playerRB.MovePosition(playerRB.position + _movement * playerSpeed);
 
-        //animation
-        if(playerRB.position == _previousPosition) //isn't moving
-        {
-            playerAnimator.SetBool("moving", false);
-        }
-        else
-        {
-            playerAnimator.SetBool("moving", true);
+        // //animation
+        // if(playerRB.position == _previousPosition) //isn't moving
+        // {
+        //     playerAnimator.SetBool("moving", false);
+        // }
+        // else
+        // {
+        //     playerAnimator.SetBool("moving", true);
 
-            if (_movement.y > 0) //down
-            {
-                playerAnimator.SetInteger("direction", 3);
+        //     if (_movement.y > 0) //down
+        //     {
+        //         playerAnimator.SetInteger("direction", 3);
 
-            }
+        //     }
 
-            if (_movement.x < 0) //left
-            {
-                playerAnimator.SetInteger("direction", 1);
-            }
+        //     if (_movement.x < 0) //left
+        //     {
+        //         playerAnimator.SetInteger("direction", 1);
+        //     }
 
-            if (_movement.x > 0) //right
-            {
-                playerAnimator.SetInteger("direction", 2);
-            }
+        //     if (_movement.x > 0) //right
+        //     {
+        //         playerAnimator.SetInteger("direction", 2);
+        //     }
 
-            if (_movement.y < 0) //up
-            {
-                playerAnimator.SetInteger("direction", 0);
-            }
-        }
+        //     if (_movement.y < 0) //up
+        //     {
+        //         playerAnimator.SetInteger("direction", 0);
+        //     }
+        // }
 
         _previousPosition = playerRB.position;
     }
