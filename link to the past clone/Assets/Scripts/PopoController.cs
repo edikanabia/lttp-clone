@@ -7,24 +7,13 @@ public class PopoController : MonoBehaviour
     public float popoSpeed;
     private int direction;
 
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
-        direction = Random.Range(1, 8);
+        direction = Random.Range(1, 9);
 
         //Debug.Log("Direction is " + direction);
 
-        if(Random.Range(1, 100) >= 95)
+        if(Random.Range(0, 100) >= 95)
         {
             switch(direction)
             {
