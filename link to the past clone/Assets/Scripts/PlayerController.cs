@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    public static PlayerController instance;
     public int playerHealth = 6;
     public float playerSpeed;
+    float speed;
     public Rigidbody2D playerRB;
     private Vector2 _movement;
 
     //public Animator playerAnimator;
     private Vector2 _previousPosition;
 
+    private void Awake()
+    {
+        instance = this;
 
+        speed = playerSpeed;
+
+        playerHealth = 6;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = 6;
-
         _previousPosition = playerRB.position;
 
-        
     }
 
     // Update is called once per frame
@@ -37,14 +42,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(int damage)
     {
-        GameObject hitEnemy = collision.gameObject;
+        playerHealth -= damage;
+    }
 
-        if(collision.gameObject.tag == "Enemy")
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     GameObject hitEnemy = collision.gameObject;
+
+    //     if(collision.gameObject.tag == "Enemy")
+    //     {
+    //         playerHealth -= hitEnemy.GetComponent<Enemy>().enemyAttackPower;
+
+            
+    //     }
+    // }
+
+    public IEnumerator playerKnockback(float knockbackDuration, float knockbackPower, Transform obj)
+    {
+        float timer = 0;
+        
+        speed = 0;
+
+        while(knockbackDuration > timer)
         {
-            playerHealth -= hitEnemy.GetComponent<Enemy>().enemyAttackPower;
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            playerRB.AddForce(-direction * knockbackPower);
         }
+
+        yield return new WaitForSeconds(0.2f);
+
+        speed = playerSpeed;
+
     }
 
     //updates at time intervals 
@@ -52,38 +83,7 @@ public class PlayerController : MonoBehaviour
     //so as to not tie things to framerate).
     private void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + _movement * playerSpeed);
-
-        // //animation
-        // if(playerRB.position == _previousPosition) //isn't moving
-        // {
-        //     playerAnimator.SetBool("moving", false);
-        // }
-        // else
-        // {
-        //     playerAnimator.SetBool("moving", true);
-
-        //     if (_movement.y > 0) //down
-        //     {
-        //         playerAnimator.SetInteger("direction", 3);
-
-        //     }
-
-        //     if (_movement.x < 0) //left
-        //     {
-        //         playerAnimator.SetInteger("direction", 1);
-        //     }
-
-        //     if (_movement.x > 0) //right
-        //     {
-        //         playerAnimator.SetInteger("direction", 2);
-        //     }
-
-        //     if (_movement.y < 0) //up
-        //     {
-        //         playerAnimator.SetInteger("direction", 0);
-        //     }
-        // }
+        playerRB.MovePosition(playerRB.position + _movement * speed);
 
         _previousPosition = playerRB.position;
     }

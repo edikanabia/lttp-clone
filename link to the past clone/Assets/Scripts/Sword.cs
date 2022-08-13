@@ -2,21 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirePoint : MonoBehaviour
+public class Sword : MonoBehaviour
 {
     void Update()
     {
-        //Rotates firepoint
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            gameObject.transform.eulerAngles = new Vector3(
-                gameObject.transform.eulerAngles.x,
-                gameObject.transform.eulerAngles.y,
-                90
-            );
-        }
 
-        if(Input.GetKeyDown(KeyCode.A))
+        //Rotates sword
+        if(Input.GetKeyDown(KeyCode.W))
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
@@ -25,7 +17,7 @@ public class FirePoint : MonoBehaviour
             );
         }
 
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(KeyCode.A))
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
@@ -34,7 +26,7 @@ public class FirePoint : MonoBehaviour
             );
         }
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.S))
         {
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
@@ -43,5 +35,15 @@ public class FirePoint : MonoBehaviour
             );
         }
 
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            gameObject.transform.eulerAngles = new Vector3(
+                gameObject.transform.eulerAngles.x,
+                gameObject.transform.eulerAngles.y,
+                90
+            );
+        }
+
     }
+
 }

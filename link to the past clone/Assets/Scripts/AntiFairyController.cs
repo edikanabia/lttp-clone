@@ -7,7 +7,6 @@ public class AntiFairyController : MonoBehaviour
     public float antiFairySpeedX;
     public float antiFairySpeedY;
 
-
     void FixedUpdate()
     {
         transform.Translate(antiFairySpeedX, antiFairySpeedY, 0);

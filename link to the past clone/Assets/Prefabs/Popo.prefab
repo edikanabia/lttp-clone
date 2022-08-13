@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6273850435056560674}
   - component: {fileID: 8029479873303100713}
   - component: {fileID: 2102202496527736999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Popo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,9 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90c434f487dc934db26d6e80e86a0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 2
+  enemyRb: {fileID: 8029479873303100713}
+  enemyHealth: 4
   enemyAttackPower: 1
   invulnerable: 0
+  enemySpeed: 5
+  enemyKnockbackPower: 75
+  enemyKnockDuration: 1
 --- !u!114 &5376190095203582893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9a871080059ff48b64be5a7ad17e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popoSpeed: 0.05
+  rb: {fileID: 8029479873303100713}
+  box: {fileID: 6273850435056560674}
 --- !u!61 &6273850435056560674
 BoxCollider2D:
   m_ObjectHideFlags: 0

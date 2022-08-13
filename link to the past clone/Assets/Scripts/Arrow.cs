@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public int arrowAttackPower = 2;
     public float speed = 20f;
     public Rigidbody2D rb;
     GameObject player;
@@ -23,7 +24,7 @@ public class Arrow : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy" && !hitEnemy.GetComponent<Enemy>().invulnerable)
         {
-            hitEnemy.GetComponent<Enemy>().enemyHealth -= 2;
+            hitEnemy.GetComponent<Enemy>().TakeDamage(arrowAttackPower);
             Destroy(this.gameObject);
             player.GetComponent<Bow>().hasShot = false;
         }
@@ -35,6 +36,7 @@ public class Arrow : MonoBehaviour
 
             //StartCoroutine(CanShootAgain());
         }
+
     }
 
     // IEnumerator CanShootAgain()
