@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a0eed714440c2d044b1634a2d7ee002c
+guid: 2a90461fab43595498ff67b84d193a8f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_0
+      name: link_idle_down_still_walk_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bd655ceafb6c1c49ad30da50d28e14b
-      internalID: 1085599977
+      spriteID: d0ed25c06a8971343afa462d6af452d7
+      internalID: -1651342522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_1
+      name: link_idle_down_still_walk_1
       rect:
         serializedVersion: 2
-        x: 136
+        x: 127
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dc18ca7d9df411438b50dae0d4c621f
-      internalID: 1495133833
+      spriteID: 123e61234ccac0f41895bc4a2384ed14
+      internalID: -916961546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_2
+      name: link_idle_down_still_walk_2
       rect:
         serializedVersion: 2
-        x: 272
+        x: 254
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e440ecd01e68014dafe288992f5129f
-      internalID: 1941743084
+      spriteID: d78be7e3ad9348f4ea653aed056ccf57
+      internalID: -484601435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_3
+      name: link_idle_down_still_walk_3
       rect:
         serializedVersion: 2
-        x: 408
+        x: 381
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3fb1a5357507bb4ca53ebcf41da6276
-      internalID: 804495329
+      spriteID: 0b8d5c51d7680c342b6594be3486b08a
+      internalID: -892805220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_4
+      name: link_idle_down_still_walk_4
       rect:
         serializedVersion: 2
-        x: 544
+        x: 508
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430eebab19aea7141ac8bfb0ada65d60
-      internalID: -490058358
+      spriteID: 98ff12def7b186442a8b20d413a42843
+      internalID: -291794287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_5
+      name: link_idle_down_still_walk_5
       rect:
         serializedVersion: 2
-        x: 680
+        x: 635
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6981c39d030948244b66801d40d8dd6a
-      internalID: -136938498
+      spriteID: 982d14742294ef347b2452830f5d7065
+      internalID: -1792782244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_6
+      name: link_idle_down_still_walk_6
       rect:
         serializedVersion: 2
-        x: 816
+        x: 762
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 430e93db6d7dfa54a9b6718805ee14a2
-      internalID: 293966400
+      spriteID: 2d89b6b7d72c50a4895450d55707f392
+      internalID: 269945250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: link_idle_still_and_front_1_7
+      name: link_idle_down_still_walk_7
       rect:
         serializedVersion: 2
-        x: 952
+        x: 889
         y: 0
-        width: 136
-        height: 154
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,29 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef483a3515c3d2545bdab5df78e7b0ca
-      internalID: -794887455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: link_idle_still_and_front_1_8
-      rect:
-        serializedVersion: 2
-        x: 1088
-        y: 0
-        width: 136
-        height: 154
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7477d853047e1cf4a9b1d8664e2c3a7c
-      internalID: -700123995
+      spriteID: fa2c03c5c3e2aad4b94a51d23168e80b
+      internalID: -1201226181
       vertices: []
       indices: 
       edges: []
@@ -315,15 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      link_idle_still_and_front_1_1: 1495133833
-      link_idle_still_and_front_1_5: -136938498
-      link_idle_still_and_front_1_0: 1085599977
-      link_idle_still_and_front_1_4: -490058358
-      link_idle_still_and_front_1_2: 1941743084
-      link_idle_still_and_front_1_7: -794887455
-      link_idle_still_and_front_1_6: 293966400
-      link_idle_still_and_front_1_8: -700123995
-      link_idle_still_and_front_1_3: 804495329
+      link_idle_down_still_walk_6: 269945250
+      link_idle_down_still_walk_0: -1651342522
+      link_idle_down_still_walk_1: -916961546
+      link_idle_down_still_walk_2: -484601435
+      link_idle_down_still_walk_4: -291794287
+      link_idle_down_still_walk_7: -1201226181
+      link_idle_down_still_walk_5: -1792782244
+      link_idle_down_still_walk_3: -892805220
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
