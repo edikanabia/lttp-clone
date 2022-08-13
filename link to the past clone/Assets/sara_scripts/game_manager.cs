@@ -4,19 +4,35 @@ using UnityEngine;
 
 public class game_manager : MonoBehaviour
 {
-    public static bool game_paused = false;
+    public bool game_paused = false;
+    public GameObject menu;
 
-    void Start()
-    {
+    private void Start()
+    {   
         game_paused = false;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown("enter"))
+        
+        if (game_paused == false)
         {
-            game_paused = true;
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+               game_paused = true;
+               menu.GetComponent<menu>().CallMenu();
+            }
         }
+        else if (game_paused == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                game_paused = false;
+                menu.GetComponent<menu>().RemoveMenu();
+            }
+        }
+
+
     }
 
 
