@@ -21,6 +21,7 @@ public class game_manager : MonoBehaviour
             {
                game_paused = true;
                menu.GetComponent<menu>().CallMenu();
+               Time.timeScale = 0;
             }
         }
         else if (game_paused == true)
@@ -29,6 +30,7 @@ public class game_manager : MonoBehaviour
             {
                 game_paused = false;
                 menu.GetComponent<menu>().RemoveMenu();
+                Time.timeScale = 1;
             }
         }
 
