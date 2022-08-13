@@ -17,7 +17,7 @@ public class game_manager : MonoBehaviour
         
         if (game_paused == false)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Return))
             {
                game_paused = true;
                menu.GetComponent<menu>().CallMenu();
@@ -26,7 +26,7 @@ public class game_manager : MonoBehaviour
         }
         else if (game_paused == true)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 game_paused = false;
                 menu.GetComponent<menu>().RemoveMenu();
