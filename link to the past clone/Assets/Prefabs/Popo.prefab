@@ -108,6 +108,9 @@ MonoBehaviour:
   enemySpeed: 5
   enemyKnockbackPower: 75
   enemyKnockDuration: 1
+  enemyTransform: {fileID: 5376190095203582880}
+  heartPrefab: {fileID: 1852739588144426053, guid: e04492024f5d14d44a926a2500b67e9d, type: 3}
+  rupeePrefab: {fileID: 2139522624027642161, guid: b33b3c607445d63479f3f9313f09a5b8, type: 3}
 --- !u!114 &5376190095203582893
 MonoBehaviour:
   m_ObjectHideFlags: 0

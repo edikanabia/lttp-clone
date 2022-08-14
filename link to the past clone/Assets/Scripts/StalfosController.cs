@@ -110,7 +110,7 @@ public class StalfosController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject")
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject" || collision.gameObject.tag == "Pot")
         {
             direction = Random.Range(1, 5);
         }
@@ -118,7 +118,7 @@ public class StalfosController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject")
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject" || collision.gameObject.tag == "Pot")
         {
             box.isTrigger = false;
         }
@@ -126,7 +126,7 @@ public class StalfosController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject")
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject" || collision.gameObject.tag == "Pot")
         {
             box.isTrigger = true;
         }

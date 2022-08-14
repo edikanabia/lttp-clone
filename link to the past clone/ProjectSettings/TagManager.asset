@@ -20,6 +20,9 @@ TagManager:
   - BowAttack
   - HorizontalObject
   - VerticalObject
+  - Rupee
+  - Heart
+  - Pot
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
+  - Pots
   - 
   - 
   - 

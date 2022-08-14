@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
     public float enemyKnockbackPower = 100;
     public float enemyKnockDuration = 1;
 
+    public Transform enemyTransform;
+    public GameObject heartPrefab;
+    public float heartChance = 0.75f;
+    public GameObject rupeePrefab;
+    public float rupeeChance = 0.5f;
+
     private void Awake()
     {
         instance = this;
@@ -29,8 +35,30 @@ public class Enemy : MonoBehaviour
         //Death Code
         if(enemyHealth <= 0)
         {
-            Destroy(this.gameObject);
+            Death();
         }
+    }
+
+    void Death()
+    {
+        int pick = Random.Range(0, 2);
+
+        if(pick == 0)
+        {
+            if(Random.Range(0f, 1f) >= heartChance)
+            {
+                Instantiate(heartPrefab, enemyTransform.position, enemyTransform.rotation);
+            }
+        }
+        else
+        {
+            if(Random.Range(0f, 1f) >= rupeeChance)
+            {
+                Instantiate(rupeePrefab, enemyTransform.position, enemyTransform.rotation);
+            }
+        }  
+
+        Destroy(this.gameObject);
     }
 
     public void TakeDamage(int damage)

@@ -5,11 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
-    public int playerHealth = 6;
+
+    public int maxHealth = 6;
+    int health;
+
     public float playerSpeed;
     float speed;
+
     public Rigidbody2D playerRB;
     private Vector2 _movement;
+
+    int rupeeCount = 0;
 
     //public Animator playerAnimator;
     private Vector2 _previousPosition;
@@ -20,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
         speed = playerSpeed;
 
-        playerHealth = 6;
+        health = maxHealth;
     }
 
     // Start is called before the first frame update
@@ -36,7 +42,7 @@ public class PlayerController : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
-        if(playerHealth <= 0)
+        if(health <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -44,20 +50,32 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        playerHealth -= damage;
+        health -= damage;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     GameObject hitEnemy = collision.gameObject;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-    //     if(collision.gameObject.tag == "Enemy")
-    //     {
-    //         playerHealth -= hitEnemy.GetComponent<Enemy>().enemyAttackPower;
+        if(collision.gameObject.tag == "Rupee")
+        {
+            rupeeCount += 1;
+            Destroy(collision.gameObject);
+        }
 
+        if(collision.gameObject.tag == "Heart")
+        {
+            int healthGained = 2;
+            health += healthGained;
+
+            //if health is higher than max health: set health to max health
+            if(health > maxHealth)
+            {
+                health = maxHealth;
+            }
             
-    //     }
-    // }
+            Destroy(collision.gameObject);
+        }
+    }
 
     public IEnumerator playerKnockback(float knockbackDuration, float knockbackPower, Transform obj)
     {

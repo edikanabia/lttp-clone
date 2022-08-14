@@ -6,6 +6,7 @@ public class PlayerSword : MonoBehaviour
 {
     public Transform attackPoint;
     public LayerMask enemyLayers;
+    public LayerMask potLayers;
 
     public float attackRange = 0.5f;
     public int attackDamage = 2;
@@ -31,6 +32,14 @@ public class PlayerSword : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             StartCoroutine(Enemy.instance.enemyKnockback(swordKnockDuration, swordKnockbackPower, enemy.transform));
+        }
+
+
+        Collider2D[] hitPots = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, potLayers);
+
+        foreach(Collider2D pot in hitPots)
+        {
+            pot.GetComponent<Pot>().Break();
         }
     }
 
