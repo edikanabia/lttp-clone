@@ -14,13 +14,15 @@ public class Pot : MonoBehaviour
 
     public bool isChest = false;
     public bool isBigChest = false;
-    bool playerHasBigKey = false;
+    public bool playerHasBigKey = false;
     public bool chestHasKey = false;
     public GameObject keyPrefab;
     public bool chestHasBigKey = false;
     public GameObject bigKeyPrefab;
     public bool chestHasRupee = false;
 
+    public GameObject bowPrefab;
+    public bool chestHasBow = false;
 
     public bool chest_is_open = false;
     //animators
@@ -105,13 +107,21 @@ public class Pot : MonoBehaviour
             }
 
         } 
-       
-            
 
-
-        else if (contact.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
+        if (contact.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
         {
-            player.GetComponent<Bow>().hasBow = true;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                chest_is_open = true;
+                my_animator.SetBool("is_open", true);
+                var new_bow = Instantiate(bowPrefab);
+                bowPrefab.transform.position = new Vector3(potTransform.position.x,
+                        potTransform.position.y + 0.1f, potTransform.position.z);
+                
+                StartCoroutine(CollectBow(new_bow));
+
+            }
+               
         }
 
     }
@@ -136,7 +146,12 @@ public class Pot : MonoBehaviour
         Destroy(this_one);
     }
 
-
+    IEnumerator CollectBow(GameObject this_one)
+    {
+        yield return new WaitForSeconds(1);
+        //player.GetComponent<Bow>().hasBow = true;
+        Destroy(this_one);
+    }
 
 
 }
