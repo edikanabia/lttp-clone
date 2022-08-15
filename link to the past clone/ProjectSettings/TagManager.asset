@@ -23,6 +23,8 @@ TagManager:
   - Rupee
   - Heart
   - Pot
+  - Key
+  - Big Key
   layers:
   - Default
   - TransparentFX

@@ -11,8 +11,8 @@ public class PlayerSword : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 2;
 
-    public float swordKnockbackPower = 100;
-    public float swordKnockDuration = 1;
+    // public float swordKnockbackPower = 100;
+    // public float swordKnockDuration = 1;
 
     void Update()
     {
@@ -31,7 +31,7 @@ public class PlayerSword : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-            StartCoroutine(Enemy.instance.enemyKnockback(swordKnockDuration, swordKnockbackPower, enemy.transform));
+            //  StartCoroutine(enemy.gameObject.GetComponent<Enemy>().enemyKnockback(swordKnockDuration, swordKnockbackPower, enemy.transform));
         }
 
 
