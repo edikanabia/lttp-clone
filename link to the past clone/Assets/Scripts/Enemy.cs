@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static Enemy instance;
+    //public static Enemy instance;
     public Rigidbody2D enemyRb;
+    public GameObject player;
 
     public int enemyHealth = 2;
     public int enemyAttackPower = 1;
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     public float enemyKnockbackPower = 100;
     public float enemyKnockDuration = 1;
+    public float playerKnockbackPower = 100;
+    public float playerKnockbackDuration = 1;
 
     public Transform enemyTransform;
     public GameObject heartPrefab;
@@ -25,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        //instance = this;
 
         speed = enemySpeed;
     }
@@ -63,26 +66,29 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        StartCoroutine(enemyKnockback(playerKnockbackDuration, playerKnockbackPower, player.transform));
         enemyHealth -= damage;
     }
 
     public IEnumerator enemyKnockback(float knockbackDuration, float knockbackPower, Transform obj)
     {
-        float timer = 0;
+        //Debug.Log("enemy knocked back");
+        //float timer = 0;
         
         speed = 0;
+        // Debug.Log("speed is " + speed);
 
-        while(knockbackDuration > timer)
-        {
-            timer += Time.deltaTime;
-            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
-            enemyRb.AddForce(-direction * knockbackPower);
-        }
+        // while(knockbackDuration > timer)
+        // {
+        //     timer += Time.deltaTime;
+        //     Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+        //     enemyRb.AddForce(-direction * knockbackPower);
+        // }
 
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.2f);
 
         speed = enemySpeed;
-
+        //Debug.Log("speed is now " + speed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

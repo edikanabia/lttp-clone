@@ -15,7 +15,11 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D playerRB;
     private Vector2 _movement;
 
-    int rupeeCount = 0;
+    public int rupeeCount = 0;
+
+    public int keys;
+    public bool hasKeys;
+    public bool hasBigKey;
 
     //public Animator playerAnimator;
     private Vector2 _previousPosition;
@@ -41,6 +45,15 @@ public class PlayerController : MonoBehaviour
     {
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
+
+        if(keys > 0)
+        {
+            hasKeys = true;
+        }
+        else
+        {
+            hasKeys = false;
+        }
 
         if(health <= 0)
         {
@@ -75,6 +88,19 @@ public class PlayerController : MonoBehaviour
             
             Destroy(collision.gameObject);
         }
+
+        if(collision.gameObject.tag == "Key")
+        {
+            keys += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Big Key")
+        {
+            hasBigKey = true;
+            Destroy(collision.gameObject);
+        }
+        
     }
 
     public IEnumerator playerKnockback(float knockbackDuration, float knockbackPower, Transform obj)
