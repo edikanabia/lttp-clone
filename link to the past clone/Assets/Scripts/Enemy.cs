@@ -98,8 +98,8 @@ public class Enemy : MonoBehaviour
         //On player collision: player takes damage and gets knocked back
         if(collision.gameObject.tag == "Player")
         {
-            hitPlayer.GetComponent<PlayerController>().TakeDamage(enemyAttackPower);
-            StartCoroutine(PlayerController.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
+            hitPlayer.GetComponent<temp_link_movement>().TakeDamage(enemyAttackPower);
+            //StartCoroutine(temp_link_movement.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
         }
     }
     
