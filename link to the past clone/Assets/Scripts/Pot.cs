@@ -82,18 +82,24 @@ public class Pot : MonoBehaviour
                     rupeePrefab.transform.position = new Vector3(potTransform.position.x,
                         potTransform.position.y + 0.1f, potTransform.position.z);
 
-                    StartCoroutine(CollectIt(new_rupee));
+                    StartCoroutine(CollectRupee(new_rupee));
                 }
                 
 
                 if (chestHasKey)
                 {
                     player.gameObject.GetComponent<temp_link_movement>().keys += 1;
+
                 }
 
                 if (chestHasBigKey)
                 {
-                    playerHasBigKey = true;
+                    var new_big_key = Instantiate(bigKeyPrefab);
+                    bigKeyPrefab.transform.position = new Vector3(potTransform.position.x,
+                        potTransform.position.y + 0.1f, potTransform.position.z);
+
+                    StartCoroutine(CollectBigKey(new_big_key));
+                    
                 }
 
             }
@@ -116,10 +122,17 @@ public class Pot : MonoBehaviour
 
 
 
-    IEnumerator CollectIt(GameObject this_one)
+    IEnumerator CollectRupee(GameObject this_one)
      {
          yield return new WaitForSeconds(1);
         player.gameObject.GetComponent<temp_link_movement>().rupeeCount += 20;
+        Destroy(this_one);
+    }
+
+    IEnumerator CollectBigKey(GameObject this_one)
+    {
+        yield return new WaitForSeconds(1);
+        playerHasBigKey = true;
         Destroy(this_one);
     }
 
