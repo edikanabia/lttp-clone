@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 5376190095203582894}
   - component: {fileID: 5376190095203582893}
   - component: {fileID: 6273850435056560674}
+  - component: {fileID: 8029479873303100713}
   - component: {fileID: 2102202496527736999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Popo
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,9 +101,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90c434f487dc934db26d6e80e86a0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 2
+  enemyRb: {fileID: 8029479873303100713}
+  enemyHealth: 4
   enemyAttackPower: 1
   invulnerable: 0
+  enemySpeed: 5
+  enemyKnockbackPower: 75
+  enemyKnockDuration: 1
+  enemyTransform: {fileID: 5376190095203582880}
+  heartPrefab: {fileID: 1852739588144426053, guid: e04492024f5d14d44a926a2500b67e9d, type: 3}
+  rupeePrefab: {fileID: 2139522624027642161, guid: b33b3c607445d63479f3f9313f09a5b8, type: 3}
 --- !u!114 &5376190095203582893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9a871080059ff48b64be5a7ad17e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popoSpeed: 0.05
+  rb: {fileID: 8029479873303100713}
+  box: {fileID: 6273850435056560674}
 --- !u!61 &6273850435056560674
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,6 +151,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!50 &8029479873303100713
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376190095203582892}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!95 &2102202496527736999
 Animator:
   serializedVersion: 4

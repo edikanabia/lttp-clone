@@ -15,7 +15,7 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !hasShot)
+        if(Input.GetKeyDown(KeyCode.E) && !hasShot)
         {
             Shoot();
             hasShot = true;

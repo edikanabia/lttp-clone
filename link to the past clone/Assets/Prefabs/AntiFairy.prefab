@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9109007774811916287}
   - component: {fileID: 882858366058862355}
   - component: {fileID: 7549792506745305224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AntiFairy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,9 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90c434f487dc934db26d6e80e86a0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyRb: {fileID: 9109007774811916287}
   enemyHealth: 2
   enemyAttackPower: 1
   invulnerable: 1
+  enemySpeed: 0
+  enemyKnockbackPower: 100
+  enemyKnockDuration: 1
 --- !u!114 &9109007774811916273
 MonoBehaviour:
   m_ObjectHideFlags: 0
