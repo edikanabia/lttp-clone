@@ -35,7 +35,9 @@ public class temp_link_movement : MonoBehaviour
     public int order_lower = 5;
     private SpriteRenderer tempLinkSprite;
 
-    
+
+  
+
 
     //animation vars
     public Animator LinkAnimator;
@@ -203,6 +205,9 @@ public class temp_link_movement : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+
+
+
 
 
     //KNOCKBACK

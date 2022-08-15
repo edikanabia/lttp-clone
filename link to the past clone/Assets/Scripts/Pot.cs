@@ -21,6 +21,10 @@ public class Pot : MonoBehaviour
     public GameObject bigKeyPrefab;
     public bool chestHasRupee = false;
 
+    //animators
+    public Animator my_animator;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,50 +39,60 @@ public class Pot : MonoBehaviour
 
     public void Break()
     {
-        if(!isChest && !isBigChest)
+        if (!isChest && !isBigChest)
         {
             int pick = Random.Range(0, 2);
 
-            if(pick == 0)
+            if (pick == 0)
             {
-                if(Random.Range(0f, 1f) >= heartChance)
+                if (Random.Range(0f, 1f) >= heartChance)
                 {
                     Instantiate(heartPrefab, potTransform.position, potTransform.rotation);
                 }
             }
             else
             {
-                if(Random.Range(0f, 1f) >= rupeeChance)
+                if (Random.Range(0f, 1f) >= rupeeChance)
                 {
                     Instantiate(rupeePrefab, potTransform.position, potTransform.rotation);
                 }
-            }  
+            }
 
             Destroy(this.gameObject);
         }
-        else if(isChest)
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && isChest)
         {
-            if(chestHasRupee)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                player.gameObject.GetComponent<PlayerController>().rupeeCount += 20;
+                my_animator.SetBool("is_open", true);
+                if (chestHasRupee)
+                {
+                    player.gameObject.GetComponent<temp_link_movement>().rupeeCount += 20;
+                }
+
+                if (chestHasKey)
+                {
+                    player.gameObject.GetComponent<temp_link_movement>().keys += 1;
+                }
+
+                if (chestHasBigKey)
+                {
+                    playerHasBigKey = true;
+                }
+
             }
 
-            if(chestHasKey)
-            {
-                player.gameObject.GetComponent<PlayerController>().keys += 1;
-            }
-
-            if(chestHasBigKey)
-            {
-
-                playerHasBigKey = true;
-                
-            }
         }
-        else if(isBigChest && playerHasBigKey) 
+        else if (collision.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
         {
             player.GetComponent<Bow>().hasBow = true;
         }
+
     }
-    
+
 }
