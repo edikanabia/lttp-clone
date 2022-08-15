@@ -21,6 +21,8 @@ public class Pot : MonoBehaviour
     public GameObject bigKeyPrefab;
     public bool chestHasRupee = false;
 
+
+    public bool chest_is_open = false;
     //animators
     public Animator my_animator;
     
@@ -63,17 +65,26 @@ public class Pot : MonoBehaviour
 
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    
+
+
+    private void OnCollisionStay2D(Collision2D contact)
     {
-        if (collision.gameObject.tag == "Player" && isChest)
+        if (contact.gameObject.tag == "Player" && isChest && chest_is_open == false)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                chest_is_open = true;
                 my_animator.SetBool("is_open", true);
                 if (chestHasRupee)
                 {
-                    player.gameObject.GetComponent<temp_link_movement>().rupeeCount += 20;
+                    var new_rupee = Instantiate(rupeePrefab);
+                    rupeePrefab.transform.position = new Vector3(potTransform.position.x,
+                        potTransform.position.y + 0.1f, potTransform.position.z);
+
+                    StartCoroutine(CollectIt(new_rupee));
                 }
+                
 
                 if (chestHasKey)
                 {
@@ -87,12 +98,32 @@ public class Pot : MonoBehaviour
 
             }
 
-        }
-        else if (collision.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
+        } 
+       
+            
+
+
+        else if (contact.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
         {
             player.GetComponent<Bow>().hasBow = true;
         }
 
     }
+
+
+ 
+
+
+
+
+    IEnumerator CollectIt(GameObject this_one)
+     {
+         yield return new WaitForSeconds(1);
+        player.gameObject.GetComponent<temp_link_movement>().rupeeCount += 20;
+        Destroy(this_one);
+    }
+
+
+
 
 }
