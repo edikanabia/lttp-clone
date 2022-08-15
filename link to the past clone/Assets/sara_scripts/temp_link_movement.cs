@@ -19,12 +19,15 @@ public class temp_link_movement : MonoBehaviour
 
     private Vector2 _movement;
 
-
-    //public Camera cam;
+    //animation vars
+    public Animator LinkAnimator;
+    private Vector2 _previousPosition;
+    
 
     private void Start()
     {
-        tempLinkSprite = GetComponent<SpriteRenderer>();       
+        tempLinkSprite = GetComponent<SpriteRenderer>();
+        _previousPosition = tempLink_c.position;
     }
 
 
@@ -42,6 +45,35 @@ public class temp_link_movement : MonoBehaviour
     private void FixedUpdate()
     {
         tempLink_c.MovePosition(tempLink_c.position + _movement * tempLinkSpeed);
+
+        //animation
+        if(tempLink_c.position == _previousPosition)
+        {
+            LinkAnimator.SetBool("is_moving", false);
+        }
+        else
+        {
+            LinkAnimator.SetBool("is_moving", true);
+            if(_movement.y < 0)
+            {
+                LinkAnimator.SetInteger("direction", 1);
+            }
+            if (_movement.x < 0)
+            {
+                LinkAnimator.SetInteger("direction", 3);
+            }
+            if (_movement.y > 0)
+            {
+                LinkAnimator.SetInteger("direction", 2);
+            }
+            if (_movement.x > 0)
+            {
+                LinkAnimator.SetInteger("direction", 4);
+            }
+        }
+
+        _previousPosition = tempLink_c.position;
+
     }
 
     //change order in layer when on the lower floor AND
