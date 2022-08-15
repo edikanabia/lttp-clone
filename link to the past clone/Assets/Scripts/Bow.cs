@@ -6,6 +6,7 @@ public class Bow : MonoBehaviour
 {
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public bool hasBow;
     public bool hasShot;
 
     void Start()
@@ -15,11 +16,15 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !hasShot)
+        if(hasBow)
         {
-            Shoot();
-            hasShot = true;
+            if(Input.GetKeyDown(KeyCode.E) && !hasShot)
+            {
+                Shoot();
+                hasShot = true;
+            }
         }
+        
     }
 
     void Shoot()

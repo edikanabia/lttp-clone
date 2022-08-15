@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public int arrowAttackPower = 2;
     public float speed = 20f;
     public Rigidbody2D rb;
     GameObject player;
-    GameObject enemy;
     
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        enemy = GameObject.FindWithTag("Enemy");
 
         rb.velocity = transform.right * speed;
 
@@ -21,9 +20,11 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && !enemy.GetComponent<Enemy>().invulnerable)
+        GameObject hitEnemy = collision.gameObject;
+
+        if(collision.gameObject.tag == "Enemy" && !hitEnemy.GetComponent<Enemy>().invulnerable)
         {
-            enemy.GetComponent<Enemy>().enemyHealth -= 2;
+            hitEnemy.GetComponent<Enemy>().TakeDamage(arrowAttackPower);
             Destroy(this.gameObject);
             player.GetComponent<Bow>().hasShot = false;
         }
@@ -35,6 +36,7 @@ public class Arrow : MonoBehaviour
 
             //StartCoroutine(CanShootAgain());
         }
+
     }
 
     // IEnumerator CanShootAgain()

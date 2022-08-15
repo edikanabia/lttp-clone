@@ -4,55 +4,97 @@ using UnityEngine;
 
 public class PopoController : MonoBehaviour
 {
-    public float popoSpeed;
     private int direction;
+    public Rigidbody2D rb;
+    public BoxCollider2D box;
+    float speed;
 
     void Start()
     {
-        
-    }
-
-
-    void Update()
-    {
-        
+        speed = gameObject.GetComponent<Enemy>().enemySpeed;
     }
 
     void FixedUpdate()
     {
-        direction = Random.Range(1, 8);
+        direction = Random.Range(1, 9);
 
-        Debug.Log("Direction is " + direction);
+        //Debug.Log("Direction is " + direction);
 
-        if(Random.Range(1, 100) >= 90)
+        if(Random.Range(0, 100) >= 95)
         {
-            switch(direction)
+
+            if(direction == 1) //right
             {
-                case 1:
-                    transform.Translate(popoSpeed, 0, 0);
-                    break;
-                case 2:
-                    transform.Translate(popoSpeed, -popoSpeed, 0);
-                    break;
-                case 3:
-                    transform.Translate(0, -popoSpeed, 0);
-                    break;
-                case 4:
-                    transform.Translate(-popoSpeed, -popoSpeed, 0);
-                    break;
-                case 5:
-                    transform.Translate(-popoSpeed, 0, 0);
-                    break;
-                case 6:
-                    transform.Translate(-popoSpeed, popoSpeed, 0);;
-                    break;
-                case 7:
-                    transform.Translate(0, popoSpeed, 0);
-                    break;
-                case 8:
-                    transform.Translate(popoSpeed, popoSpeed, 0);
-                    break;
+                Vector3 tempVect = new Vector3(1, 0, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
             }
+
+            if(direction == 2) //down right
+            {
+                Vector3 tempVect = new Vector3(1, -1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 3) //down 
+            {
+                Vector3 tempVect = new Vector3(0, -1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 4) //down left
+            {
+                Vector3 tempVect = new Vector3(-1, -1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 5) //left
+            {
+                Vector3 tempVect = new Vector3(-1, 0, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 6) //up left
+            {
+                Vector3 tempVect = new Vector3(-1, 1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 7) //up 
+            {
+                Vector3 tempVect = new Vector3(0, 1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+
+            if(direction == 8) //up right
+            {
+                Vector3 tempVect = new Vector3(1, 1, 0);
+                tempVect = tempVect.normalized * speed * Time.deltaTime;
+                rb.MovePosition(transform.position + tempVect);
+            }
+            
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject" || collision.gameObject.tag == "Pot")
+        {
+            box.isTrigger = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject" || collision.gameObject.tag == "Pot")
+        {
+            box.isTrigger = true;
         }
     }
 }

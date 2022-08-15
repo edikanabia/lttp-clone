@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
 
-    public int playerHealth = 6;
+    public int maxHealth = 6;
+    int health;
+
     public float playerSpeed;
+    float speed;
+
     public Rigidbody2D playerRB;
     private Vector2 _movement;
 
-    public Animator playerAnimator;
+    public int rupeeCount = 0;
+
+    public int keys;
+    public bool hasKeys;
+    public bool hasBigKey;
+
+    //public Animator playerAnimator;
     private Vector2 _previousPosition;
 
-    GameObject enemy;
+    private void Awake()
+    {
+        instance = this;
 
+        speed = playerSpeed;
+
+        health = maxHealth;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = 6;
-
         _previousPosition = playerRB.position;
 
-        enemy = GameObject.FindWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -32,18 +46,80 @@ public class PlayerController : MonoBehaviour
         _movement.x = Input.GetAxisRaw("Horizontal");
         _movement.y = Input.GetAxisRaw("Vertical");
 
-        if(playerHealth <= 0)
+        if(keys > 0)
+        {
+            hasKeys = true;
+        }
+        else
+        {
+            hasKeys = false;
+        }
+
+        if(health <= 0)
         {
             Destroy(this.gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TakeDamage(int damage)
     {
-        if(collision.gameObject.tag == "Enemy")
+        health -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if(collision.gameObject.tag == "Rupee")
         {
-            playerHealth -= enemy.GetComponent<Enemy>().enemyAttackPower;
+            rupeeCount += 1;
+            Destroy(collision.gameObject);
         }
+
+        if(collision.gameObject.tag == "Heart")
+        {
+            int healthGained = 2;
+            health += healthGained;
+
+            //if health is higher than max health: set health to max health
+            if(health > maxHealth)
+            {
+                health = maxHealth;
+            }
+            
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Key")
+        {
+            keys += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.gameObject.tag == "Big Key")
+        {
+            hasBigKey = true;
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
+    public IEnumerator playerKnockback(float knockbackDuration, float knockbackPower, Transform obj)
+    {
+        float timer = 0;
+        
+        speed = 0;
+
+        while(knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            playerRB.AddForce(-direction * knockbackPower);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        speed = playerSpeed;
+
     }
 
     //updates at time intervals 
@@ -51,38 +127,7 @@ public class PlayerController : MonoBehaviour
     //so as to not tie things to framerate).
     private void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + _movement * playerSpeed);
-
-        //animation
-        if(playerRB.position == _previousPosition) //isn't moving
-        {
-            playerAnimator.SetBool("moving", false);
-        }
-        else
-        {
-            playerAnimator.SetBool("moving", true);
-
-            if (_movement.y > 0) //down
-            {
-                playerAnimator.SetInteger("direction", 3);
-
-            }
-
-            if (_movement.x < 0) //left
-            {
-                playerAnimator.SetInteger("direction", 1);
-            }
-
-            if (_movement.x > 0) //right
-            {
-                playerAnimator.SetInteger("direction", 2);
-            }
-
-            if (_movement.y < 0) //up
-            {
-                playerAnimator.SetInteger("direction", 0);
-            }
-        }
+        playerRB.MovePosition(playerRB.position + _movement * speed);
 
         _previousPosition = playerRB.position;
     }
