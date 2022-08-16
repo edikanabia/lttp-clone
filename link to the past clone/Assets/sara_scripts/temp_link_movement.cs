@@ -9,7 +9,7 @@ public class temp_link_movement : MonoBehaviour
     public static temp_link_movement instance;
 
     public int maxHealth = 6;
-    int health;
+    public int health;
     float speed;
 
     //RUPIS COUNT

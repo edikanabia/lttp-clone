@@ -76,7 +76,7 @@ public class Pot : MonoBehaviour
 
     IEnumerator DestroyPotExploAnim(GameObject this_one)
     {
-        yield return new WaitForSeconds(0.13f);
+        yield return new WaitForSeconds(0.2f);
         Destroy(this.gameObject);
         Destroy(this_one);
     }
