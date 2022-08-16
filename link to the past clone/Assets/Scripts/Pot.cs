@@ -27,7 +27,9 @@ public class Pot : MonoBehaviour
     public bool chest_is_open = false;
     //animators
     public Animator my_animator;
-    
+
+    public GameObject explosionPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,12 +64,22 @@ public class Pot : MonoBehaviour
                 }
             }
 
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            var new_explosion = Instantiate(explosionPrefab);
+            explosionPrefab.transform.position = new Vector3(potTransform.position.x,
+                        potTransform.position.y, potTransform.position.z);
+            StartCoroutine(DestroyPotExploAnim(new_explosion));
+            
         }
 
     }
 
-    
+    IEnumerator DestroyPotExploAnim(GameObject this_one)
+    {
+        yield return new WaitForSeconds(0.13f);
+        Destroy(this.gameObject);
+        Destroy(this_one);
+    }
 
 
     private void OnCollisionStay2D(Collision2D contact)
