@@ -23,20 +23,27 @@ public class game_manager : MonoBehaviour
 
     //numbers
     int life_a;
+    int rupee_a;
+    int key_a;
 
     private void Start()
     {   
         game_paused = false;
-        //life_a = player.GetComponent<temp_link_movement>().health;
-
-        //life_n.text = life_a.ToString() + "/6";
-
     }
 
     private void Update()
     {
         life_a = player.GetComponent<temp_link_movement>().health;
         life_n.text = life_a.ToString() + "/6";
+        rupee_a = player.GetComponent<temp_link_movement>().rupeeCount;
+        rupee_n.text = rupee_a.ToString();
+        key_a = player.GetComponent<temp_link_movement>().keys;
+        key_n.text = key_a.ToString();
+        if(player.GetComponent<Bow>().hasBow == true)
+        {
+            bow_icon.GetComponent<SpriteRenderer>().enabled = true;
+        }
+
 
 
         if (game_paused == false)
@@ -66,7 +73,10 @@ public class game_manager : MonoBehaviour
                 rupee_icon.GetComponent<SpriteRenderer>().enabled = true;
                 key_icon.GetComponent<SpriteRenderer>().enabled = true;
                 life_icon.GetComponent<SpriteRenderer>().enabled = true;
-                //bow_icon.GetComponent<SpriteRenderer>().enabled = true;
+                if (player.GetComponent<Bow>().hasBow == true)
+                {
+                    bow_icon.GetComponent<SpriteRenderer>().enabled = true;
+                }
 
 
                 Time.timeScale = 1;
