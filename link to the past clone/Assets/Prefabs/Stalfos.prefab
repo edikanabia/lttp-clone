@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 83868634511298689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 16
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,15 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyRb: {fileID: 83868634511298692}
+  player: {fileID: 0}
   enemyHealth: 4
   enemyAttackPower: 1
   invulnerable: 0
   enemySpeed: 2
   enemyKnockbackPower: 75
   enemyKnockDuration: 1
+  playerKnockbackPower: 100
+  playerKnockbackDuration: 1
   enemyTransform: {fileID: 83868634511298693}
   heartPrefab: {fileID: 1852739588144426053, guid: e04492024f5d14d44a926a2500b67e9d, type: 3}
+  heartChance: 0.75
   rupeePrefab: {fileID: 2139522624027642161, guid: b33b3c607445d63479f3f9313f09a5b8, type: 3}
+  rupeeChance: 0.5
 --- !u!114 &83868634511298695
 MonoBehaviour:
   m_ObjectHideFlags: 0

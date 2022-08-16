@@ -70,37 +70,63 @@ public class Enemy : MonoBehaviour
         enemyHealth -= damage;
     }
 
+    //public IEnumerator enemyKnockback(float knockbackDuration, float knockbackPower, Transform obj)
+    //{
+    //    Debug.Log("enemy knocked back");
+    //    float timer = 0;
+
+    //    speed = 0;
+    //    Debug.Log("speed is " + speed);
+
+    //    while (knockbackDuration > timer)
+    //    {
+    //        timer += Time.deltaTime;
+    //        Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+    //        enemyRb.AddForce(-direction * knockbackPower);
+    //    }
+
+    //    yield return new WaitForSeconds(0.2f);
+
+    //    speed = enemySpeed;
+    //    Debug.Log("speed is now " + speed);
+    //}
+
     public IEnumerator enemyKnockback(float knockbackDuration, float knockbackPower, Transform obj)
     {
-        //Debug.Log("enemy knocked back");
-        //float timer = 0;
-        
+
+
         speed = 0;
-        // Debug.Log("speed is " + speed);
+        Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+        enemyRb.AddForce(-direction * knockbackPower);
 
-        // while(knockbackDuration > timer)
-        // {
-        //     timer += Time.deltaTime;
-        //     Vector2 direction = (obj.transform.position - this.transform.position).normalized;
-        //     enemyRb.AddForce(-direction * knockbackPower);
-        // }
-
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         speed = enemySpeed;
         //Debug.Log("speed is now " + speed);
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    GameObject hitPlayer = collision.gameObject;
+
+    //    //On player collision: player takes damage and gets knocked back
+    //    if(collision.gameObject.tag == "Player")
+    //    {
+    //        hitPlayer.GetComponent<temp_link_movement>().TakeDamage(enemyAttackPower);
+    //        //StartCoroutine(temp_link_movement.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject hitPlayer = collision.gameObject;
 
         //On player collision: player takes damage and gets knocked back
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             hitPlayer.GetComponent<temp_link_movement>().TakeDamage(enemyAttackPower);
             //StartCoroutine(temp_link_movement.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
         }
     }
-    
+
 }

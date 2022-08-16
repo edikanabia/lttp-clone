@@ -86,7 +86,7 @@ public class Pot : MonoBehaviour
     {
         if (contact.gameObject.tag == "Player" && isChest && chest_is_open == false)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 chest_is_open = true;
                 my_animator.SetBool("is_open", true);
@@ -122,7 +122,7 @@ public class Pot : MonoBehaviour
 
         if (contact.gameObject.tag == "Player" && isBigChest && playerHasBigKey)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 chest_is_open = true;
                 my_animator.SetBool("is_open", true);

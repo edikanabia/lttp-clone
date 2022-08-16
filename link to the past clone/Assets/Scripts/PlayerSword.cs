@@ -16,7 +16,7 @@ public class PlayerSword : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
@@ -25,17 +25,22 @@ public class PlayerSword : MonoBehaviour
 
     void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 
+            attackRange, enemyLayers);
+
+
 
         //for each enemy collided with: Enemy takes damage and gets knocked back
         foreach(Collider2D enemy in hitEnemies)
         {
+            //Debug.Log(enemy);
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             //  StartCoroutine(enemy.gameObject.GetComponent<Enemy>().enemyKnockback(swordKnockDuration, swordKnockbackPower, enemy.transform));
         }
 
 
-        Collider2D[] hitPots = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, potLayers);
+        Collider2D[] hitPots = Physics2D.OverlapCircleAll(attackPoint.position, 
+            attackRange, potLayers);
 
         foreach(Collider2D pot in hitPots)
         {
