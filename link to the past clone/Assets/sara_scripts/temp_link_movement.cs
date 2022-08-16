@@ -5,11 +5,29 @@ using UnityEngine;
 
 public class temp_link_movement : MonoBehaviour
 {
+    //vars from Kris scripts (for health, enemies etc)
+    public static temp_link_movement instance;
+
+    public int maxHealth = 6;
+    public int health;
+    float speed;
+
+    //RUPIS COUNT
+    public int rupeeCount = 0;
+
+    //KEYS
+    public int keys;
+    public bool hasKeys;
+    public bool hasBigKey;
+
+    //for movement
     public int current_floor = 1;
-    public float tempLinkSpeed = 0;
+    public float tempLinkSpeed;
     public Rigidbody2D tempLink_c;
 
     public bool link_can_move = true;
+    private Vector2 _movement;
+
 
     //order in layer vars
     public int sortingOrder = 16;
@@ -17,12 +35,23 @@ public class temp_link_movement : MonoBehaviour
     public int order_lower = 5;
     private SpriteRenderer tempLinkSprite;
 
-    private Vector2 _movement;
+
+  
+
 
     //animation vars
     public Animator LinkAnimator;
     private Vector2 _previousPosition;
-    
+
+
+    private void Awake()
+    {
+        instance = this;
+
+        speed = tempLinkSpeed;
+
+        health = maxHealth;
+    }
 
     private void Start()
     {
@@ -39,7 +68,26 @@ public class temp_link_movement : MonoBehaviour
             _movement.x = Input.GetAxisRaw("Horizontal");
             _movement.y = Input.GetAxisRaw("Vertical");
         }
-        
+
+        if (keys > 0)
+        {
+            hasKeys = true;
+        }
+        else
+        {
+            hasKeys = false;
+        }
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
     }
 
     private void FixedUpdate()
@@ -123,6 +171,63 @@ public class temp_link_movement : MonoBehaviour
                 collision.gameObject.transform.position);
         }
 
+        //COLLECTING RUPIES AND HEARTS
+        if (collision.gameObject.tag == "Rupee")
+        {
+            rupeeCount += 1;
+            Destroy(collision.gameObject);
         }
-    
+
+        if (collision.gameObject.tag == "Heart")
+        {
+            int healthGained = 2;
+            health += healthGained;
+
+            //if health is higher than max health: set health to max health
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+
+            Destroy(collision.gameObject);
+        }
+
+        //COLLECTING KEYS
+        if (collision.gameObject.tag == "Key")
+        {
+            keys += 1;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Big Key")
+        {
+            hasBigKey = true;
+            Destroy(collision.gameObject);
+        }
+    }
+
+
+
+
+
+    //KNOCKBACK
+    public IEnumerator playerKnockback(float knockbackDuration, float knockbackPower, Transform obj)
+    {
+        float timer = 0;
+
+        speed = 0;
+
+        while (knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            tempLink_c.AddForce(-direction * knockbackPower);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        speed = tempLinkSpeed;
+
+    }
+
 }

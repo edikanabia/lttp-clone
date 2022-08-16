@@ -29,7 +29,10 @@ public class Arrow : MonoBehaviour
             player.GetComponent<Bow>().hasShot = false;
         }
 
-        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject")
+        if(collision.gameObject.tag == "HorizontalObject" || collision.gameObject.tag == "VerticalObject"
+            || collision.gameObject.tag == "border" || collision.gameObject.tag == "stairs" 
+            || collision.gameObject.tag == "deco" || collision.gameObject.tag == "low_floor_wall" 
+            || collision.gameObject.tag == "door" || collision.gameObject.tag == "door_locka")
         {
             Destroy(this.gameObject);
             player.GetComponent<Bow>().hasShot = false;

@@ -25,6 +25,9 @@ TagManager:
   - Pot
   - Key
   - Big Key
+  - chest
+  - door
+  - door_locka
   layers:
   - Default
   - TransparentFX
