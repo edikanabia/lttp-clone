@@ -11,6 +11,8 @@ public class PlayerSword : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 2;
 
+    public GameObject swordSlash;
+
     // public float swordKnockbackPower = 100;
     // public float swordKnockDuration = 1;
 
@@ -20,11 +22,16 @@ public class PlayerSword : MonoBehaviour
         {
             Attack();
         }
+        else
+        {
+            swordSlash.SetActive(false);
+        }
 
     }
 
     void Attack()
     {
+        swordSlash.SetActive(true);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, 
             attackRange, enemyLayers);
 

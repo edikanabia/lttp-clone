@@ -83,18 +83,6 @@ public class temp_link_movement : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-    }
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-    }
-
-    private void FixedUpdate()
-    {
-        tempLink_c.MovePosition(tempLink_c.position + _movement * tempLinkSpeed);
-
-        //animation
         if(tempLink_c.position == _previousPosition)
         {
             LinkAnimator.SetBool("is_moving", false);
@@ -119,6 +107,43 @@ public class temp_link_movement : MonoBehaviour
                 LinkAnimator.SetInteger("direction", 4);
             }
         }
+
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
+
+    private void FixedUpdate()
+    {
+        tempLink_c.MovePosition(tempLink_c.position + _movement * tempLinkSpeed);
+
+        //animation
+        // if(tempLink_c.position == _previousPosition)
+        // {
+        //     LinkAnimator.SetBool("is_moving", false);
+        // }
+        // else
+        // {
+        //     LinkAnimator.SetBool("is_moving", true);
+        //     if(_movement.y < 0)
+        //     {
+        //         LinkAnimator.SetInteger("direction", 1);
+        //     }
+        //     if (_movement.x < 0)
+        //     {
+        //         LinkAnimator.SetInteger("direction", 3);
+        //     }
+        //     if (_movement.y > 0)
+        //     {
+        //         LinkAnimator.SetInteger("direction", 2);
+        //     }
+        //     if (_movement.x > 0)
+        //     {
+        //         LinkAnimator.SetInteger("direction", 4);
+        //     }
+        // }
 
         _previousPosition = tempLink_c.position;
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StalfosController : MonoBehaviour
 {
-    public static StalfosController instance;
+    public Animator stalfosAnimator;
+
     public float delay;
     public float time;
     public float waitDelay;
@@ -43,6 +44,11 @@ public class StalfosController : MonoBehaviour
             //up
             if(direction == 1)
             {
+                stalfosAnimator.SetBool("isMovingUp", true);
+                stalfosAnimator.SetBool("isMovingDown", false);
+                stalfosAnimator.SetBool("isMovingLeft", false);
+                stalfosAnimator.SetBool("isMovingRight", false);
+
                 Vector3 tempVect = new Vector3(0, 1, 0);
                 tempVect = tempVect.normalized * speed * Time.deltaTime;
                 rb.MovePosition(transform.position + tempVect);
@@ -52,6 +58,11 @@ public class StalfosController : MonoBehaviour
             //down
             if(direction == 2)
             {
+                stalfosAnimator.SetBool("isMovingUp", false);
+                stalfosAnimator.SetBool("isMovingDown", true);
+                stalfosAnimator.SetBool("isMovingLeft", false);
+                stalfosAnimator.SetBool("isMovingRight", false);
+
                 Vector3 tempVect = new Vector3(0, -1, 0);
                 tempVect = tempVect.normalized * speed * Time.deltaTime;
                 rb.MovePosition(transform.position + tempVect);
@@ -61,6 +72,11 @@ public class StalfosController : MonoBehaviour
             //left
             if(direction == 3)
             {
+                stalfosAnimator.SetBool("isMovingUp", false);
+                stalfosAnimator.SetBool("isMovingDown", false);
+                stalfosAnimator.SetBool("isMovingLeft", true);
+                stalfosAnimator.SetBool("isMovingRight", false);
+
                 Vector3 tempVect = new Vector3(-1, 0, 0);
                 tempVect = tempVect.normalized * speed * Time.deltaTime;
                 rb.MovePosition(transform.position + tempVect);
@@ -70,6 +86,11 @@ public class StalfosController : MonoBehaviour
             //right
             if(direction == 4)
             {
+                stalfosAnimator.SetBool("isMovingUp", false);
+                stalfosAnimator.SetBool("isMovingDown", false);
+                stalfosAnimator.SetBool("isMovingLeft", false);
+                stalfosAnimator.SetBool("isMovingRight", true);
+
                 Vector3 tempVect = new Vector3(1, 0, 0);
                 tempVect = tempVect.normalized * speed * Time.deltaTime;
                 rb.MovePosition(transform.position + tempVect);
