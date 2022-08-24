@@ -139,7 +139,7 @@ MonoBehaviour:
   enemyHealth: 4
   enemyAttackPower: 1
   invulnerable: 0
-  enemySpeed: 5
+  enemySpeed: 2
   enemyKnockbackPower: 3
   enemyKnockDuration: 1
   playerKnockbackPower: 3

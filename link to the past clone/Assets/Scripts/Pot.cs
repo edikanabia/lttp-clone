@@ -14,7 +14,7 @@ public class Pot : MonoBehaviour
 
     public bool isChest = false;
     public bool isBigChest = false;
-    public bool playerHasBigKey = false;
+    public static bool playerHasBigKey = false;
     public bool chestHasKey = false;
     public GameObject keyPrefab;
     public bool chestHasBigKey = false;
@@ -161,7 +161,7 @@ public class Pot : MonoBehaviour
     IEnumerator CollectBow(GameObject this_one)
     {
         yield return new WaitForSeconds(1);
-        //player.GetComponent<Bow>().hasBow = true;
+        player.GetComponent<Bow>().hasBow = true;
         Destroy(this_one);
     }
 

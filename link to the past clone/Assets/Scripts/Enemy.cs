@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             hitPlayer.GetComponent<temp_link_movement>().TakeDamage(enemyAttackPower);
-            //StartCoroutine(temp_link_movement.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
+            StartCoroutine(temp_link_movement.instance.playerKnockback(enemyKnockDuration, enemyKnockbackPower, this.transform));
         }
     }
 
