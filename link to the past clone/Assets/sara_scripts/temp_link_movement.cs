@@ -174,7 +174,7 @@ public class temp_link_movement : MonoBehaviour
         {
             tempLinkSpeed = 0.01f;
         }else{
-            tempLinkSpeed = 0.04f;
+            tempLinkSpeed = 0.03f;
         }
         if(collision.gameObject.tag == "door_rm_1")
         {
@@ -184,7 +184,7 @@ public class temp_link_movement : MonoBehaviour
         if (collision.gameObject.tag == "exit")
         {
             link_can_move = true;
-            tempLinkSpeed = 0.05f;
+            tempLinkSpeed = 0.03f;
         }
    
         //camera_boundaries change when in the new room

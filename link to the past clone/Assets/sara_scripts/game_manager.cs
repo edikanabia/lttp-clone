@@ -51,7 +51,7 @@ public class game_manager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Return))
             {
                game_paused = true;
-               menu.GetComponent<menu>().CallMenu();
+               menu.GetComponent<SpriteRenderer>().enabled = true;
                 invent.GetComponent<SpriteRenderer>().enabled = false;
                 heart_icon.GetComponent<SpriteRenderer>().enabled = false;
                 rupee_icon.GetComponent<SpriteRenderer>().enabled = false;
@@ -67,7 +67,8 @@ public class game_manager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 game_paused = false;
-                menu.GetComponent<menu>().RemoveMenu();
+                menu.GetComponent<SpriteRenderer>().enabled = false;
+                //menu.GetComponent<menu>().RemoveMenu();
                 invent.GetComponent<SpriteRenderer>().enabled = true;
                 heart_icon.GetComponent<SpriteRenderer>().enabled = true;
                 rupee_icon.GetComponent<SpriteRenderer>().enabled = true;
